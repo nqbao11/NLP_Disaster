@@ -1,0 +1,3 @@
+data:
+  train: "D:\\Project\\NLP_Disaster\\data\\train.csv"
+  test: "D:\\Project\\NLP_Disaster\\data\\test.csv"
