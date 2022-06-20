@@ -15,5 +15,8 @@
 ## Result
 > Note: These experiments are evaluated over a blind test dataset of 3262 tweets, submitted on Kaggle.
 
-|Model|Experiment|Result|Documents|
+|Model|Experiment|Result in private test|Documents|
 |-|-|-|-|
+|Logistic Regression|Preprocess tweet|0.73|.|
+|Bert base|Not Preprocess tweet| 0.83|.|
+
