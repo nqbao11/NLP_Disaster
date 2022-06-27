@@ -22,3 +22,7 @@
 |LSTM|Tweet Tokenizer|0.79|.|
 |Bert base|Not Preprocess tweet| 0.83|.|
 
+## Commands
+`python src\eval.py --model src\models\logistic_regression --data data\test.csv --output results`
+`python src\eval.py --model src\models\lstm --data data\test.csv --output results`
+
