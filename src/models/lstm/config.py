@@ -1,6 +1,6 @@
-BATCH_SIZE = 64
-FILE_NAME_TRAIN = '..\..\..\data\\train.csv'  # This line looks weird with a mix of \ and \\ - but it works
-FILE_NAME_TEST = '..\..\..\data\\test.csv'
-VOCAB_PATH_SAVE = 'vocab'
-VOCAB_PATH_LOAD = 'src\models\lstm\\vocab'  # Need to change - not hardcode
-MODEL_PATH = 'model_lstm.pt'
+batch_size_config = 64
+data_train_path = "..\..\..\data\\train.csv"  # This line looks weird with a mix of \ and \\ - but it works
+data_test_path = "..\..\..\data\\test.csv"
+vocab_path_save = "vocab"
+vocab_path_load = "src\models\lstm\\vocab"  # Need to change - not hardcode
+model_path = "model_lstm.pt"
