@@ -18,5 +18,7 @@
 |Model|Experiment|Result in private test|Documents|
 |-|-|-|-|
 |Logistic Regression|Preprocess tweet|0.73|.|
+|LSTM|Moses Tokenizer|0.73|.|
+|LSTM|Tweet Tokenizer|0.79|.|
 |Bert base|Not Preprocess tweet| 0.83|.|
 
