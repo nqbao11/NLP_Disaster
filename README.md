@@ -17,10 +17,11 @@
 
 |Model|Experiment|Result in private test|Documents|
 |-|-|-|-|
-|Logistic Regression|Preprocess tweet|0.73|.|
-|LSTM|Moses Tokenizer|0.73|.|
-|LSTM|Tweet Tokenizer|0.79|.|
-|Bert base|Not Preprocess tweet| 0.83|.|
+|Logistic Regression|Preprocess tweet|0.734|.|
+|Logistic Regression|Preprocess and Hardcode Keywords|0.736|.|
+|LSTM|Moses Tokenizer|0.730|.|
+|LSTM|Tweet Tokenizer|0.795|.|
+|Bert base|Not Preprocess tweet| 0.837|.|
 
 ## Commands
 `python src\eval.py --model src\models\logistic_regression --data data\test.csv --output results`
