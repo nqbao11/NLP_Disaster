@@ -2,9 +2,12 @@ import torch
 import torch.nn as nn
 import pandas as pd
 import dill  # Similar to pickle
-from nltk.tokenize import TweetTokenizer  # Module for tokenizing strings
 
 # Use dill instead of pickle because pickle cannot serialize torchtext.legacy.data.Field
+
+from nltk.tokenize import (
+    TweetTokenizer,
+)  # A combination of hashtag + word is treated as one token instead of two
 
 
 class LstmClassifier(nn.Module):
@@ -116,14 +119,14 @@ def evaluate(model, iterator, criterion):
     return epoch_loss / len(iterator), epoch_acc / len(iterator)
 
 
-# Save Vocab object (torchtext.data.Field) to file
+# Save vocab object (torchtext.data.Field) to file
 def save_vocab(vocab_obj, vocab_path):
     with open(vocab_path, "wb") as f:
         dill.dump(vocab_obj, f)
     return None
 
 
-# Load Vocab object (torchtext.data.Field) from file
+# Load vocab object (torchtext.data.Field) from file
 def load_vocab(vocab_path):
     with open(vocab_path, "rb") as f:
         vocab = dill.load(f)
@@ -148,7 +151,7 @@ def get_data_test(data_test_path):
     return tweet_test_df, tweets_for_test
 
 
-# Tokenize tweets
+# Define tokenizer for predict()
 tokenizer = TweetTokenizer(preserve_case=False, strip_handles=True, reduce_len=True)
 
 

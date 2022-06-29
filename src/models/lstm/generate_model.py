@@ -20,7 +20,7 @@ tokenize = lambda s: tokenizer.tokenize(s)
 
 
 # https://torchtext.readthedocs.io/en/latest/data.html#field
-# torchtext.data.Fields holds a Vocab object
+# torchtext.data.Fields holds a vocab object
 text_torch = data.Field(
     tokenize=tokenize, lower=True, batch_first=True, include_lengths=True
 )
@@ -64,11 +64,6 @@ train_iterator, valid_iterator = data.BucketIterator.splits(
 )
 
 
-# Define hyperparameters for training the model
-n_epochs = 5
-best_valid_loss = float("inf")
-
-
 # Define hyperparameters for initializing a model instance
 size_of_vocab = len(text_torch.vocab)
 embedding_dim = 100
@@ -95,7 +90,6 @@ pretrained_embeddings = text_torch.vocab.vectors
 model.embedding.weight.data.copy_(pretrained_embeddings)
 # Alternative for pretrained_embedding: model.embedding.weight.data.copy_(vocab.vectors)
 
-
 # Define optimizer and loss
 optimizer = optim.Adam(model.parameters())
 criterion = nn.BCELoss()
@@ -105,14 +99,15 @@ criterion = nn.BCELoss()
 # criterion = criterion.to(device)
 
 print("Entering training phrase...")
-for epoch in range(n_epochs):
+# Define hyperparameters for training the model
+n_epochs = 5
+best_valid_loss = float("inf")
 
+for epoch in range(n_epochs):
     # Train the model
     train_loss, train_acc = train(model, train_iterator, optimizer, criterion)
-
     # Evaluate the model
     valid_loss, valid_acc = evaluate(model, valid_iterator, criterion)
-
     # Save the best model
     if valid_loss < best_valid_loss:
         best_valid_loss = valid_loss
