@@ -14,8 +14,15 @@ def load_model(model_path):
     model.load(model_path)
     return model
 
-def infer(model, data_test, output_file):
+def infer_file(model, data_test, output_file):
     model.test(data_test, output_file)
+
+def infer_single(model, input_file, output_file):
+    with open(input_file,'r') as f:
+        input = f.read()
+    output = model.predict(input)
+    with open(output_file, "w") as f:
+        f.write(str(output))
 
 if __name__ == "__main__":
 
@@ -23,7 +30,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Model Evalution")
     parser.add_argument("--data", help="evaluation data directory")
     parser.add_argument("-o", "--output", help="Output directory")
-
+    parser.add_argument("--mode", default="single", help="Inference Mode")
     args = parser.parse_args()
 
     #Get current directory of file
@@ -33,5 +40,8 @@ if __name__ == "__main__":
     classifier = load_model(os.path.join(current_dir, MODEL_PATH))
 
     #Inference
-    output = os.path.join(args.output, model_name + "_submit.csv")  # need a config file
-    infer(classifier, args.data, output)
+    if args.mode == "single":
+        infer_single(classifier, args.data, args.output)
+    else:
+        output = os.path.join(args.output, model_name + "_submit.csv")  # need a config file
+        infer_file(classifier, args.data, output)
