@@ -22,11 +22,15 @@ def home():
 @app.route("/predict", methods=["GET", "POST"])
 def predict():
     if request.method == "POST":
-        tweet = request.form
+        tweet_form = request.form
+        tweet = ""
         with open("input_tweet.txt", "w") as f:
-            for key, value in tweet.items():
+            for key, value in tweet_form.items():
+                tweet = value
                 f.write(value)
-        return render_template("predict.html")
+
+        full_filename = os.path.join(app.config["UPLOAD_FOLDER"], "t1.jpg")
+        return render_template("predict.html", tweet=tweet, img_path=full_filename)
 
 
 if __name__ == "__main__":
