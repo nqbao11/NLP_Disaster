@@ -17,4 +17,6 @@ if __name__ == "__main__":
     #Call for evaluation
     subprocess.run(["python", os.path.join(args.model, "infer.py"), 
                     "--data", args.data, 
-                    "--output", args.output])
+                    "--output", args.output,
+                    "--mode", "file"
+                    ])
