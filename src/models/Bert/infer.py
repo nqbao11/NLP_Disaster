@@ -14,7 +14,7 @@ def load_model(checkpoint):
 
 @torch.no_grad()
 def infer(model, tokenizer, data_file, output, device):
-    model = model.to(device)
+    # model = model.to(device)
     
     fout = open(output, "w")
     writer = csv.writer(fout)
@@ -23,8 +23,8 @@ def infer(model, tokenizer, data_file, output, device):
     dataset = load_dataset("csv", data_files=data_file)
     for data in dataset["train"]:
         id = data["id"]
-        encoded = tokenizer(data['text'], return_tensors = 'pt').to(device)
-        predict = torch.argmax(model(**encoded)[0]).item()
+        # encoded = tokenizer(data['text'], return_tensors = 'pt').to(device)
+        # predict = torch.argmax(model(**encoded)[0]).item()
         writer.writerow([id, 1])
     
     fout.close()
@@ -43,8 +43,9 @@ if __name__ == "__main__":
     model_name = current_dir.split("\\")[-1]
     #Load model
     device = "cuda" if torch.cuda.is_available() else "cpu"
-    model, tokenizer = load_model(os.path.join(current_dir, checkpoint))
+    # model, tokenizer = load_model(os.path.join(current_dir, checkpoint))
+
 
     #Inference
     output = os.path.join(args.output, model_name + "_submit.csv")
-    infer(model, tokenizer, args.data, output, device=device)
+    infer(1, 1, args.data, output, device=1)
