@@ -1,0 +1,83 @@
+<html>
+
+<head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+    }
+
+    #header {
+      text-align: center;
+      width: 100%;
+      margin: 10px;
+    }
+
+    #input {
+      display: block;
+      margin: 0 auto;
+      width: 40%;
+      border: solid;
+      padding: 20px;
+    }
+
+    #output {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    footer {
+      height: 10%;
+      width: 100%;
+    }
+  </style>
+  <title>Disaster Tweet</title>
+</head>
+
+<body>
+  <div id="header">
+    <h1><span class="badge badge-danger">Enter your tweet!</span></h1>
+  </div>
+
+
+  <div id="input">
+    <form action="http://127.0.0.1:5000/infer" method="post">
+      <div class="form-group">
+        <label for="exampleInputEmail1">Select available model</label>
+        <select class="custom-select" name="model">
+          {% block option %}
+          {% endblock %}
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="tweet">Your Tweet</label>
+        <textarea required class="form-control" name="tweet" rows="10">{% block text %}{% endblock %}</textarea>
+      </div>
+      <button type="submit" class="btn btn-primary">Predict</button>
+    </form>
+  </div>
+
+  <div id=output>
+    {% block output%}
+    {% endblock %}
+  </div>
+
+  <!-- Footer -->
+  <footer class="fixed-bottom">
+    <!-- Copyright -->
+    <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
+      <a href="https://github.com/nqbao11/NLP_Disaster">Our repo</a>
+      <p>© 2022 Copyright: BaoNQ24, PhuongNTK8</p>
+    </div>
+    <!-- Copyright -->
+  </footer>
+  <!-- Footer -->
+</body>
+
+</html>
