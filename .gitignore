@@ -127,3 +127,11 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+#BERT model
+src/models/BERT/checkpoint
+
+src/tmp_input.txt
+src/tmp_output.txt
+
+src/models/LSTM/.vector_cache
