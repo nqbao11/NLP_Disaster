@@ -1,3 +1,5 @@
+# [Reference] https://www.analyticsvidhya.com/blog/2020/01/first-text-classification-in-pytorch/
+
 import torch
 import torch.nn as nn
 import pandas as pd
