@@ -127,3 +127,7 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+
+# Calling model trials
+.\src\models\lstm\trial.py
